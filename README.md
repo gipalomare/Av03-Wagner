@@ -45,11 +45,10 @@ def cadastrar_funcionario():
 ### 2.Login
 
 Realiza a autenticação do usuário. O nome de usuário e a senha são verificados no banco de dados.
-
+```python
 def login():
     username = input("Nome de usuário: ")
     password = getpass.getpass("Senha: ")
-```python
     cursor.execute('SELECT * FROM funcionarios WHERE username = ? AND password = ?', (username, password))
     user = cursor.fetchone()
 
@@ -64,11 +63,10 @@ def login():
 #### 3.1 Criar Item
 
 Permite a criação de um novo item, fornecendo nome e descrição.
-
+```python
 def criar_item():
     nome = input("Nome do item: ")
     descricao = input("Descrição do item: ")
-```python
     cursor.execute('INSERT INTO itens (nome, descricao) VALUES (?, ?)', (nome, descricao))
     conn.commit()
     print("Item criado com sucesso!")
@@ -77,11 +75,10 @@ def criar_item():
 #### 3.2 Listar Itens
 
 Exibe todos os itens cadastrados no sistema.
-
+```python
 def listar_itens():
     cursor.execute('SELECT * FROM itens')
     itens = cursor.fetchall()
-```python
     if itens:
         for item in itens:
             print(f"ID: {item[0]}, Nome: {item[1]}, Descrição: {item[2]}")
